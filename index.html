@@ -1,0 +1,139 @@
+<DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>   
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+</head>
+<body style="background-color: #323032">
+        <div id="jogo">
+            <div class="linha">
+                <div class="casa" id="casa7"></div>
+                <div class="casa" id="casa0"></div>
+                <div class="casa" id="casa1"></div>
+            </div>
+            <div class="linha">
+                <div class="casa" id="casa6"></div>
+                <div class="casameio" id="casameio"></div>
+                <div class="casa" id="casa2"></div>
+            </div>
+            <div class="linha">
+                <div class="casa" id="casa5"></div>
+                <div class="casa" id="casa4"></div>
+                <div class="casa" id="casa3"></div>
+            </div>
+        </div>
+        <input type="text" id="txt_name"  />
+        <button id="start">Start Game</button>
+        <button id="morreu">Morreu</button>
+        <div class="historico" id="historico"></div>
+
+
+<script type="text/javascript">
+var ingame = 0;
+var soma = 0;
+var casas = new Array(1,1,1,1,1,1,1,1);
+var impossiveis = new Array();
+var aux = 0;
+var contem = -1;
+
+$(".casa").click(function(event){
+    if (ingame == 0){
+        if ($(this).text()=="") {
+            value = $("#txt_name").val(); 
+            var status = $(this).attr('id');
+            var id = status.slice(-1);
+            var hist = parseInt(id);
+            hist = hist + 1;
+            $( this ).text(hist + ": " + value );
+        }
+        if  ($("#txt_name").val()=="del") {
+            $(this).text("");
+        }
+    }
+    if (ingame == 1){
+        var status = $(this).attr('id');
+        var id = status.slice(-1);
+        if (casas[id] == 1){
+            somar();
+            if (soma > 3){
+                casas[id] = 0;
+                colorir();
+                impossiveis.push(id);
+            }
+            if (soma == 3){
+                casas[id] = 0;
+                impossiveis.push(id);
+                aux = impossiveis.shift();
+                casas[aux] = 1;
+                colorir();
+            } 
+            var hist = parseInt(id);
+            hist = hist + 1;
+            $("#historico").prepend("<p>" + hist + "</p>");
+        }
+    }   
+    if (ingame == 2){
+        $(this).text("");
+        var status = $(this).attr('id');
+        var id = status.slice(-1);
+        var contem = impossiveis.indexOf(id);
+        if (contem >= 0){
+            impossiveis.splice(contem, 1);
+        }
+        if (contem < 0){
+            aux = impossiveis.shift();
+            casas[aux] = 1;
+        }
+    }
+
+});
+
+$("#start").click(function(){
+    ingame = 1;
+    for (var i = 8 - 1; i >= 0; i--) {
+        if ($("#casa" + i).text()=="") {
+            casas[i] = 0;
+        }
+    }
+    colorir();
+});
+
+$("#morreu").click(function(){
+    contem = -1;
+    ingame = 2;
+});
+
+$("#start").click(function(){
+    ingame = 1;
+    for (var i = 8 - 1; i >= 0; i--) {
+        if ($("#casa" + i).text()=="") {
+            casas[i] = 0;
+        }
+    }
+    colorir();
+});
+
+function colorir(){
+    for (var i = 8 - 1; i >= 0; i--) {
+        if  (casas[i]==0){
+            $("#casa" + i).css( "background-color", "#4D4D4D" );
+        }
+        if  (casas[i]==1){
+            $("#casa" + i).css( "background-color", "#0F8C3B" );
+        }
+    }
+}
+
+function somar(){
+    soma = 0;
+    for (var i = 8 - 1; i >= 0; i--) {
+        soma = soma + casas[i]
+    }
+    return soma;
+}
+
+</script> 
+
+</body>
+</html>
