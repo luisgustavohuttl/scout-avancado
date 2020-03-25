@@ -6,30 +6,33 @@
 
 </head>
 <body style="background-color: #323032">
-        <div id="jogo">
-            <div class="linha">
-                <div class="casa" id="casa7"></div>
-                <div class="casa" id="casa0"></div>
-                <div class="casa" id="casa1"></div>
+        <div id="container">
+            <div id="jogo">
+                <div class="linha">
+                    <div class="casa" id="casa7"></div>
+                    <div class="casa" id="casa0"></div>
+                    <div class="casa" id="casa1"></div>
+                </div>
+                <div class="linha">
+                    <div class="casa" id="casa6"></div>
+                    <div class="casameio" id="casameio"></div>
+                    <div class="casa" id="casa2"></div>
+                </div>
+                <div class="linha">
+                    <div class="casa" id="casa5"></div>
+                    <div class="casa" id="casa4"></div>
+                    <div class="casa" id="casa3"></div>
+                </div>
             </div>
-            <div class="linha">
-                <div class="casa" id="casa6"></div>
-                <div class="casameio" id="casameio"></div>
-                <div class="casa" id="casa2"></div>
+            <div class = "bot">
+                <input class="texto" type="text" id="txt_name"  />
+                <button class="botao" id="start">Start Game</button>
+                <button class="botao" id="morreu">Morreu</button>
             </div>
-            <div class="linha">
-                <div class="casa" id="casa5"></div>
-                <div class="casa" id="casa4"></div>
-                <div class="casa" id="casa3"></div>
-            </div>
+            <div class="historico" id="historico"></div>
         </div>
-        <input type="text" id="txt_name"  />
-        <button id="start">Start Game</button>
-        <button id="morreu">Morreu</button>
-        <div class="historico" id="historico"></div>
 
-
-<script type="text/javascript">
+<script>
 var ingame = 0;
 var soma = 0;
 var casas = new Array(1,1,1,1,1,1,1,1);
