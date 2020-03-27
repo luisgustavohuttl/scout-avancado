@@ -25,9 +25,8 @@
                 </div>
             </div>
             <div class = "bot">
-                <input class="texto" type="text" id="txt_name"  />
-                <button class="botao" id="start">Start Game</button>
-                <button class="botao" id="morreu">Morreu</button>
+                <button class="botao" id="start">START GAME</button>
+                <button class="botao" id="morreu">REMOVER JOGADOR</button>
             </div>
             <div class="historico" id="historico"></div>
         </div>
@@ -42,15 +41,15 @@ var contem = -1;
 
 $(".casa").click(function(event){
     if (ingame == 0){
-        if ($(this).text()=="") {
-            value = $("#txt_name").val(); 
+        value = prompt("Digite sua idade:");
+        if (value != null && value != ""){
             var status = $(this).attr('id');
             var id = status.slice(-1);
             var hist = parseInt(id);
             hist = hist + 1;
             $( this ).text(hist + ": " + value );
         }
-        if  ($("#txt_name").val()=="del") {
+        if  (value=="del") {
             $(this).text("");
         }
     }

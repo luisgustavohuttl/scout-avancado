@@ -49,10 +49,6 @@ text-align:left; /* "remédio" para o hack do IE */
 .botao{
     margin-top: 5px;
     height:40px;
-    width:150px;
-}
-
-.texto{
-    height:40px;
     width:300px;
 }
+
