@@ -1,4 +1,3 @@
-var https = require('https');
 var ingame = 0;
 var soma = 0;
 var casas = new Array(1,1,1,1,1,1,1,1);
