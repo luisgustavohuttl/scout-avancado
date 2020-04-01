@@ -1,3 +1,8 @@
+@font-face {
+font-family: 'estilo';
+src: url('TT0140M_.ttf');
+}
+
 #body {
 margin:0;
 padding:0;
@@ -5,50 +10,72 @@ text-align:center;
 }
 
 #container {
-width: 760px;
+width: 624px;
 margin:0 auto;          
 padding: 10px;
-text-align:left; /* "remédio" para o hack do IE */  
+text-align:left;
 }
  
 #jogo{
     
-    width:603px;
-    height:600px;
-    border:solid 3px
+    width:624px;
+    height:624px;
+    background-size: cover;
 
 }
  
 .linha{
     height:200px;
-    border-bottom:solid 1px;
+    border-bottom:solid 0px;
 }
- 
+
 .casa{
     width:200px;
     height:100%;
-    border-right:solid 1px;
+    border:solid 4px;
+    border-color: #1f1f1f;
     float:left;
     text-align: center;
     line-height:200px;
- 	font-family: Lucida Console, Monospace, sans-serif;
 	font-size: 25px;
-	font-variant: small-caps;
-
+    font-family: "estilo", Arial, Tahoma, Sans-serif;
+    font-variant: small-caps;
+    overflow:hidden;
+    color: white;
 }
 
 .casameio{
     width:200px;
     height:100%;
-    border-right:solid 1px;
+    border:solid 4px;
+    border-color: #1f1f1f;
     float:left;
-    background-image: url("../images/1.jpg");
-    background-size: cover;
+    background-image: url("../images/logo-app.png");
+    background-image: url("../images/logo-app.png");
+    background-size: 125px 150px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .botao{
     margin-top: 5px;
     height:40px;
-    width:300px;
+    width:150px;
+    border:solid 2px;
+    border-color: #1f1f1f;
 }
 
+#start{
+    background-image: url("../images/start.png");
+}
+
+#morreu{
+    background-image: url("../images/eliminado.png");
+}
+
+#historico{
+    margin-top: 5px;
+    color: white;
+    font-size: 20px;
+    font-family: "estilo", Arial, Tahoma, Sans-serif;
+}

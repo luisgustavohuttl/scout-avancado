@@ -1,6 +1,7 @@
 var ingame = 0;
 var soma = 0;
 var casas = new Array(1,1,1,1,1,1,1,1);
+var backup = new Array(1,1,1,1,1,1,1,1);
 var impossiveis = new Array();
 var aux = 0;
 var contem = -1;
@@ -13,7 +14,8 @@ $(".casa").click(function(event){
             var id = status.slice(-1);
             var hist = parseInt(id);
             hist = hist + 1;
-            $( this ).text(hist + ": " + value );
+            $(this).text("");
+            $( this ).prepend(hist + ": " + value );
         }
         if  (value=="del") {
             $(this).text("");
@@ -38,7 +40,7 @@ $(".casa").click(function(event){
             } 
             var hist = parseInt(id);
             hist = hist + 1;
-            $("#historico").prepend("<p>" + hist + "</p>");
+            $("#historico").prepend(" - " + hist);
         }
     }   
 
@@ -58,7 +60,6 @@ $(".casa").click(function(event){
         }
         ingame = 1;
     }
-
 });
 
 $("#start").click(function(){
@@ -76,23 +77,13 @@ $("#morreu").click(function(){
     ingame = 2;
 });
 
-$("#start").click(function(){
-    ingame = 1;
-    for (var i = 8 - 1; i >= 0; i--) {
-        if ($("#casa" + i).text()=="") {
-            casas[i] = 0;
-        }
-    }
-    colorir();
-});
-
 function colorir(){
     for (var i = 8 - 1; i >= 0; i--) {
         if  (casas[i]==0){
-            $("#casa" + i).css( "background-color", "#4D4D4D" );
+            document.getElementById("casa" + i).style.background = "url('images/vermelho-app.png')";
         }
         if  (casas[i]==1){
-            $("#casa" + i).css( "background-color", "#0F8C3B" );
+            document.getElementById("casa" + i).style.background = "url('images/verde-app.png')";
         }
     }
 }
